@@ -10,7 +10,7 @@ public class BankApplication extends Application implements EventHandler<ActionE
 	
 	Customer c1 = new Customer("John", 12345);
 	SavingsAccount s1 = new SavingsAccount(c1, 150.00);
-	Button b1, b2, b3, b4, b5, b6, b7;
+	Button b1;
 	
 	public static void main(String[] args) {
 		launch(args);	
@@ -18,8 +18,8 @@ public class BankApplication extends Application implements EventHandler<ActionE
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Bank Application");
-		b1 = new Button("If you forget");
-		b1.setOnAction(e -> System.out.println("I'll kill you. "));
+		b1 = new Button("Execute");
+		b1.setOnAction(e -> System.out.println());
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(b1);

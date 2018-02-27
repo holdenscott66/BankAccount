@@ -15,7 +15,6 @@ public class Customer{
 	public Customer(){
 		name = "";
 		customerID = 0;
-		
 	}
 	
 	/**

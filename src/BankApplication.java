@@ -6,24 +6,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
+/**
+ * The BankApplication class represents the GUI that appears to the user
+ * This BankApplication will be using the methods inside the classes in Customer, SavingsAccount 
+ * and BankAccount
+ * This class extends from the Application class that is provided by JavaFX
+ */
 public class BankApplication extends Application {
 	
-	// NOT DONE COMMENTING YET, WILL DO IT NEXT WEEK 
 	
-	
-	//declaring the stage and scene
 	Stage window;
 	Scene scene1;
 
-	//declaring the execute button
+	
 	Button executeButton;
 	
-	//declare the customer and the savings account amount
+	
 	Customer c1 = new Customer("John", 314159);
 	SavingsAccount s1 = new SavingsAccount(c1, 150.00);
 
-	
 	
 	
 	public void start(Stage primaryStage) throws Exception {
@@ -31,6 +32,12 @@ public class BankApplication extends Application {
 		window = primaryStage;
 		
 
+		/**
+		 * creates a vertical box layout that contains the CustomerNameLabel
+		 * 
+		 * 
+		 * 
+		 */
 		VBox layout1 = new VBox(15);
 		
 			Label customerNameLabel = new Label("Customer Name: " + c1.getName());
@@ -40,7 +47,7 @@ public class BankApplication extends Application {
 	
 
 	
-		//horizontal placements for the text boxes
+		//layout for two textboxes, depositTextField and withdrawTextField, they are spaced as 15 pixels apart
 		HBox layout2 = new HBox(15);
 		
 			TextField depositTextField = new TextField();
@@ -59,39 +66,37 @@ public class BankApplication extends Application {
 			executeButton.setText("Execute");
 			
 			executeButton.setOnAction(e -> {
-			try { 
-				if (withdrawTextField.getText().isEmpty() && depositTextField.getText().isEmpty()) {
-					
-				}
-				else if (withdrawTextField.getText().isEmpty()) {
-					double deposit = Double.parseDouble(depositTextField.getText()); 
-					s1.deposit(deposit);
-					balanceLabel.setText("Current Balance $" + s1.getBalance());
-					depositTextField.clear();
-				}
-				
-				else if (depositTextField.getText().isEmpty()) {
-					double withdraw = Double.parseDouble(withdrawTextField.getText()); 
-					s1.withdraw(withdraw);
-					balanceLabel.setText("Current Balance $" + s1.getBalance());
-					withdrawTextField.clear();					
-				}
-				else {
-					double withdraw = Double.parseDouble(withdrawTextField.getText()); 
-					double deposit = Double.parseDouble(depositTextField.getText()); 
-					s1.withdraw(withdraw);
-					s1.deposit(deposit);
-					balanceLabel.setText("Current Balance $" + s1.getBalance());
-					balanceLabel.setText("Current Balance $" + s1.getBalance());
-					depositTextField.clear();
-					withdrawTextField.clear();
-					}
-			}
-			
+				try { 
+	                if (withdrawTextField.getText().isEmpty() && depositTextField.getText().isEmpty()) {
+
+	                }
+	                else if (withdrawTextField.getText().isEmpty()) {
+	                    double deposit = Double.parseDouble(depositTextField.getText()); 
+	                    s1.deposit(deposit);
+	                    balanceLabel.setText("Current Balance $" + s1.getBalance());
+	                    depositTextField.clear();
+	                }
+
+	                else if (depositTextField.getText().isEmpty()) {
+	                    double withdraw = Double.parseDouble(withdrawTextField.getText()); 
+	                    s1.withdraw(withdraw);
+	                    balanceLabel.setText("Current Balance $" + s1.getBalance());
+	                    withdrawTextField.clear();
+	                }
+	                else {
+	                    double withdraw = Double.parseDouble(withdrawTextField.getText()); 
+	                    double deposit = Double.parseDouble(depositTextField.getText()); 
+	                    s1.withdraw(withdraw);
+	                    s1.deposit(deposit);
+	                    balanceLabel.setText("Current Balance $" + s1.getBalance());
+	                    depositTextField.clear();
+	                    withdrawTextField.clear();
+	                    }
+	            }
 			catch(Exception a) 
 			{
 				depositTextField.clear();
-				depositTextField.clear();
+				withdrawTextField.clear();
 	
 			}
 		});

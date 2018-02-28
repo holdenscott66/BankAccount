@@ -33,10 +33,10 @@ public class BankApplication extends Application {
 		
 
 		/**
-		 * creates a vertical box layout that contains the CustomerNameLabel
-		 * 
-		 * 
-		 * 
+		 * creates a vertical box layout that contains the:
+		 * Label CustomerNameLabel, customerIDLabel
+		 * and changes the getID method to string to allow
+		 * it to display on the customerIDLabel
 		 */
 		VBox layout1 = new VBox(15);
 		
@@ -46,8 +46,11 @@ public class BankApplication extends Application {
 			Label customerIDLabel = new Label("Account ID #" + (stringID));
 	
 
-	
-		//layout for two textboxes, depositTextField and withdrawTextField, they are spaced as 15 pixels apart
+		/**
+		 * creates a horizontal box layout that contains the:
+		 * the textFields: depositTextField and withdrawTextField
+		 *  and sets the textFields text to their respective fields
+		 */
 		HBox layout2 = new HBox(15);
 		
 			TextField depositTextField = new TextField();
@@ -57,6 +60,16 @@ public class BankApplication extends Application {
 			withdrawTextField.setPromptText("amt to withdraw");
 		
 			
+		
+		
+		/**
+		 * creates a vertical box that contains the:
+		 * balanceLabel, the executeButton
+		 * The execute button allows the user to input the amount they wish to
+		 * withdraw or deposit
+		 * It also contains a try/catch to check if the user inputs an invalid input
+		 * (ex. letters, letters mixed with numbers, etc)
+		 */
 		VBox layout3 = new VBox(15);
 		
 			Label balanceLabel = new Label("Current Balance $" + s1.getBalance());
@@ -101,7 +114,11 @@ public class BankApplication extends Application {
 			}
 		});
 
-
+		/**
+		 * adds the layouts to the GUI screen. 
+		 * layout 2 and 3 are part of layout 1 to allow
+		 * them to display in a VBox layout
+		 */
 		layout3.getChildren().addAll(executeButton, balanceLabel);
 		layout2.getChildren().addAll(depositTextField, withdrawTextField);
 		layout1.getChildren().addAll(customerNameLabel, customerIDLabel, layout2, layout3);

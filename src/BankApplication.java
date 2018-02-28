@@ -60,28 +60,21 @@ public class BankApplication extends Application {
 			
 			executeButton.setOnAction(e -> {
 			try { 
-				if (withdrawTextField.getText().isEmpty()) 
+				if (withdrawTextField.getText().isEmpty() || depositTextField.getText().isEmpty()) 
 					{
-					 
-					}
-				else 
-					{
-						double withdraw = Double.parseDouble(withdrawTextField.getText()); 
-						s1.withdraw(withdraw);
-						balanceLabel.setText("Current Balance $" + s1.getBalance());
-						depositTextField.clear();
-					}
-				
-				if (depositTextField.getText().isEmpty()) {
 					withdrawTextField.clear();
 					depositTextField.clear();
 					}
 				else 
 					{
+						double withdraw = Double.parseDouble(withdrawTextField.getText()); 
 						double deposit = Double.parseDouble(depositTextField.getText()); 
+						s1.withdraw(withdraw);
 						s1.deposit(deposit);
 						balanceLabel.setText("Current Balance $" + s1.getBalance());
+						balanceLabel.setText("Current Balance $" + s1.getBalance());
 						depositTextField.clear();
+						withdrawTextField.clear();
 					}
 			}
 			

@@ -60,21 +60,31 @@ public class BankApplication extends Application {
 			
 			executeButton.setOnAction(e -> {
 			try { 
-				if (withdrawTextField.getText().isEmpty() || depositTextField.getText().isEmpty()) 
-					{
-					withdrawTextField.clear();
+				if (withdrawTextField.getText().isEmpty() && depositTextField.getText().isEmpty()) {
+					
+				}
+				else if (withdrawTextField.getText().isEmpty()) {
+					double deposit = Double.parseDouble(depositTextField.getText()); 
+					s1.deposit(deposit);
+					balanceLabel.setText("Current Balance $" + s1.getBalance());
 					depositTextField.clear();
-					}
-				else 
-					{
-						double withdraw = Double.parseDouble(withdrawTextField.getText()); 
-						double deposit = Double.parseDouble(depositTextField.getText()); 
-						s1.withdraw(withdraw);
-						s1.deposit(deposit);
-						balanceLabel.setText("Current Balance $" + s1.getBalance());
-						balanceLabel.setText("Current Balance $" + s1.getBalance());
-						depositTextField.clear();
-						withdrawTextField.clear();
+				}
+				
+				else if (depositTextField.getText().isEmpty()) {
+					double withdraw = Double.parseDouble(withdrawTextField.getText()); 
+					s1.withdraw(withdraw);
+					balanceLabel.setText("Current Balance $" + s1.getBalance());
+					withdrawTextField.clear();					
+				}
+				else {
+					double withdraw = Double.parseDouble(withdrawTextField.getText()); 
+					double deposit = Double.parseDouble(depositTextField.getText()); 
+					s1.withdraw(withdraw);
+					s1.deposit(deposit);
+					balanceLabel.setText("Current Balance $" + s1.getBalance());
+					balanceLabel.setText("Current Balance $" + s1.getBalance());
+					depositTextField.clear();
+					withdrawTextField.clear();
 					}
 			}
 			

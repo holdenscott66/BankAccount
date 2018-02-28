@@ -69,13 +69,25 @@ public class BankAccount {
 	}
 	
 	/**
-   * The setOverdraftAmount method is used to set the overdraft amount within the account
-   * This will set the account up to only allow withdrawals that do not exceed the over
-   * draft amount
-   * @param newAmount		is the amount as a positive number that indicates how much money can 
-   * 							be withdrawn below zero before the bank account disallows any more
-   * 							withdrawals
+   * The setCustomer method is used to set the customer of the account
+   * This will set the customer of who we are accessing the bank account from
+   * @param newCust				is a new customer that we access the bank account from
+   * 							and sets up a new name and customer ID from it.
    */
+	
+	public void setCustomer(Customer newCust) {
+		this.cust = newCust;
+	}
+	
+	/**
+	   * The setOverdraftAmount method is used to set the overdraft amount within the account
+	   * This will set the account up to only allow withdrawals that do not exceed the over
+	   * draft amount
+	   * @param newAmount		is the amount as a positive number that indicates how much money can 
+	   * 							be withdrawn below zero before the bank account disallows any more
+	   * 							withdrawals
+	   */
+		
 	public void setOverdraftAmount(double newAmount) {
 		if((-1*newAmount)<=balance) {
 			this.overdraftAmount = newAmount;
